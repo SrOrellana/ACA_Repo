@@ -13,29 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.example.project.models.dtos;
 
 public class CheckPointResponse {
 
-    private Boolean response;
-
+    private boolean isInside;
     private Long idGeozone;
 
-    public CheckPointResponse(){
-        super();
-    }
-
-    public CheckPointResponse(Boolean response, Long idGeozone) {
-        this.response = response;
+    public CheckPointResponse(boolean isInside, Long idGeozone) {
+        this.isInside = isInside;
         this.idGeozone = idGeozone;
     }
 
-    public Boolean getResponse() {
-        return response;
+    // Getters y setters
+    public boolean isInside() {
+        return isInside;
     }
 
-    public void setResponse(Boolean response) {
-        this.response = response;
+    public void setInside(boolean inside) {
+        isInside = inside;
     }
 
     public Long getIdGeozone() {

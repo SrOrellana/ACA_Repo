@@ -21,6 +21,7 @@ import com.example.project.models.entities.GeoZone;
 import java.util.List;
 
 public interface GeozoneService {
+
     List<GeoZone> getAll();
 
     List<GeoZone> getAllActive();
@@ -32,4 +33,9 @@ public interface GeozoneService {
     GeoZone activateGeozone(Long id);
 
     GeoZone deactivateGeozone(Long id);
+
+    GeoZone updateGeozone(Long id, UpdateGeozoneDTO updateGeozoneDTO);
+
+    void deleteGeozone(Long id);
+
 }
