@@ -1,3 +1,18 @@
+/*
+  Copyright 2023 WeGotYou!
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+*/
 package com.app.appellas.ui.adapters
 
 import android.view.LayoutInflater
@@ -29,7 +44,7 @@ class BlogsAdapter: RecyclerView.Adapter<BlogsAdapter.BlogsViewHolder>() {
 
     override fun onBindViewHolder(holder: BlogsAdapter.BlogsViewHolder, position: Int) {
         val blog = blogsList?.get(position)
-        val uri = "https://is-app-ellas.herokuapp.com/files/"+ blog?.imagenes?.get(0)?.src
+        val uri = "http://api-app-ellas.us-east-1.elasticbeanstalk.com/files/"+ blog?.imagenes?.get(0)?.src
         holder.itemView.findViewById<TextView>(R.id.item_blog_title).text = blog?.titulo
         holder.itemView.findViewById<TextView>(R.id.item_blog_subtitle).text = blog?.subtitulo
         holder.itemView.findViewById<TextView>(R.id.item_blog_description).text = blog?.descripcion

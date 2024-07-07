@@ -1,3 +1,18 @@
+/*
+ * Copyright 2023 WeGotYou!
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.project.services.impls;
 
 import com.example.project.models.dtos.CoordinateDTO;
@@ -34,9 +49,7 @@ public class CoordinatesServiceImpl implements CoordinatesService {
         GeoZone geoEncontrada = geozoneRepository.findById(id).get();
 
         CoordinateDTO firtsCoordinate = listOfCoordinatesDTO.get(0);
-        //System.out.println("Primera coordenada: " + firtsCoordinate.getLatitude() + firtsCoordinate.getLongitude());
         CoordinateDTO lastCoordinate = listOfCoordinatesDTO.get(listOfCoordinatesDTO.size()-1);
-        //System.out.println("Ultima coordenada: " + lastCoordinate.getLatitude() + lastCoordinate.getLongitude());
 
         if( (!Objects.equals(firtsCoordinate.getLatitude(), lastCoordinate.getLatitude())) &&
                 (!Objects.equals(firtsCoordinate.getLongitude(), lastCoordinate.getLongitude()))){
@@ -44,8 +57,13 @@ public class CoordinatesServiceImpl implements CoordinatesService {
         }
 
         List<Coordinate> listExist = coordenadasRepository.getGeozoneCoordinates(id);
+        System.out.println("Id Geozona: " + id + listExist.size());
 
-        if(listExist != null){
+        if(listExist != null && listExist.size() == 1){
+            throw new RuntimeException("Geozona ya posee coordenadas (solo 1)");
+        }
+
+        if(listExist != null && listExist.size() > 1){
             throw new RuntimeException("Geozona ya posee coordenadas");
         }
 
