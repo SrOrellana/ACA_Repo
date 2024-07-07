@@ -6,9 +6,21 @@ import com.example.project.models.entities.GeoZone;
 import java.util.List;
 
 public interface GeozoneService {
+    
     List<GeoZone> getAll();
 
-    GeoZone createGeozone(CreateGeozoneDTO createGeozoneDTO);
+    List<GeoZone> getAllActive();
 
+    GeoZone getOneById(Long id);
+
+    GeoZone createGeozone(CreateGeozoneDTO createGeozoneDTO);
+   
+    GeoZone activateGeozone(Long id);
+
+    GeoZone deactivateGeozone(Long id);
+
+    GeoZone updateGeozone(Long id, UpdateGeozoneDTO updateGeozoneDTO);
+
+    void deleteGeozone(Long id);
 
 }
