@@ -7,3 +7,6 @@ Repositorio creado para el proyecto final de la materia Aplicaciones de código 
 # Diseño de app
 Puede consultar el diseño de la app SafeHarbor realizado en Figma.
 https://www.figma.com/design/1Q6O0ajzryD0VOQ65WRWqp/SafeHarbor?node-id=0-1&t=TuHNHhQbKNnxpq97-1
+
+# Manual de Usuario SafeHarbor
+https://github.com/SrOrellana/ACA_Repo/blob/main/Manual%20De%20Usuario%20SafeHarbor.pdf
