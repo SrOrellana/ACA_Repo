@@ -12,7 +12,12 @@
           "package_name": "com.app.appellas"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "543076977181-sp90mcnrts6gbmqhg62jvtgk0thrm064.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDMvJhMPxW9xEfMR_TnlzxTtmPRa3n8OZI"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543076977181-sp90mcnrts6gbmqhg62jvtgk0thrm064.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
