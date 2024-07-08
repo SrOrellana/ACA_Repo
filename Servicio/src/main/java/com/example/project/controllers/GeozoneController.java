@@ -58,7 +58,7 @@ public class GeozoneController {
     @PreAuthorize("hasRole('admin') or hasRole('usuario')")
     public ResponseEntity<?> checkPointInGeozone(@RequestBody CoordinateDTO coordinateDTO) {
         try {
-            CheckPointResponse response = new CheckPointResponse();
+            CheckPointResponse response = new CheckPointResponse(false, null);
             List<GeoZone> lista = geozoneService.getAllActive();
             if(lista == null){
                 return ResponseEntity.ok(new MessageResponse(true, 1, response, "No se encontro ninguna geozona activa en db"));
@@ -67,13 +67,13 @@ public class GeozoneController {
             Double lonConverted = Double.valueOf(coordinateDTO.getLongitude());
             for(GeoZone geozona : lista){
                 response = pointInPolygon.checkPointInGeozonePolygon(geozona.getIdGeozone(), latConverted, lonConverted);
-                if(response.getResponse()){
+                if(response.isInside()){
                     String name = geozoneService.getOneById(response.getIdGeozone()).getNombre();
                     return ResponseEntity.ok(new MessageResponse(true, 1, response, "Actualmente se encuentra en una zona de riesgo\n" +
                             "Nombre de la geozona: " + name));
                 }
             }
-            response.setResponse(false);
+            response.setInside(false);
             response.setIdGeozone(-1L);
             return ResponseEntity.ok(new MessageResponse(true, 7, response, "No se encuentra en ninguna zona de riesgo"));
         } catch (Exception e) {

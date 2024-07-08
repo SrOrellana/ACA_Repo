@@ -34,8 +34,8 @@ public interface GeozoneService {
 
     GeoZone deactivateGeozone(Long id);
 
-    GeoZone updateGeozone(Long id, UpdateGeozoneDTO updateGeozoneDTO);
+    //GeoZone updateGeozone(Long id, UpdateGeozoneDTO updateGeozoneDTO);
 
-    void deleteGeozone(Long id);
+    //void deleteGeozone(Long id);
 
 }

@@ -15,6 +15,7 @@
  */
 package com.example.project.services.geofence;
 
+import com.example.project.models.dtos.CheckPointResponse;
 import com.example.project.models.entities.Coordinate;
 import com.example.project.repositories.CoordenadasRepository;
 
