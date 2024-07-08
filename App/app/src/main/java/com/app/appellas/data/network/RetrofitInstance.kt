@@ -30,7 +30,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-private const val API_BASE_URL = ""
+private const val API_BASE_URL = "http://127.0.0.1:8080/api/"
 
 private var interceptor =HttpLoggingInterceptor().apply {
     level = HttpLoggingInterceptor.Level.BODY
