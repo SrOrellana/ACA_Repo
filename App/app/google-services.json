@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "543076977181",
+    "project_id": "sturdy-layout-428823-e1",
+    "storage_bucket": "sturdy-layout-428823-e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543076977181:android:7ab71b116023e2b2bc54f4",
+        "android_client_info": {
+          "package_name": "com.app.appellas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMvJhMPxW9xEfMR_TnlzxTtmPRa3n8OZI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
