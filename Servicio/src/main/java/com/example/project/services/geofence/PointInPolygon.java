@@ -1,5 +1,5 @@
 /*
- *   Copyright 2023 SafeHarbor
+ * Copyright 2023 WeGotYou!
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,34 +36,25 @@ public class PointInPolygon {
     @Autowired
     private CoordenadasRepository coordenadasRepository;
 
-    public CheckPointResponse checkPointInGeozonePolygon(Long idGeozone, Double lat, Double lon) {
-        // Validar parámetros de entrada
-        if (idGeozone == null || lat == null || lon == null) {
-            throw new IllegalArgumentException("Los parámetros idGeozone, lat y lon no deben ser nulos.");
-        }
+    public CheckPointResponse checkPointInGeozonePolygon(Long idGeozone, Double lat, Double lon){
 
-        // Obtener coordenadas de la geozona desde el repositorio
         List<Coordinate> coordenadas = coordenadasRepository.getGeozoneCoordinates(idGeozone);
 
-        if (coordenadas == null || coordenadas.isEmpty()) {
-            throw new IllegalArgumentException("No se encontraron coordenadas para la geozona especificada.");
+        List<org.locationtech.jts.geom.Coordinate> listOfCoordinates = new LinkedList<>();
+
+        for(int i = 0; i < coordenadas.size(); i++){
+            listOfCoordinates.add( new org.locationtech.jts.geom.Coordinate(coordenadas.get(i).getLatitud() , coordenadas.get(i).getLongitud() ));
         }
 
-        // Convertir coordenadas a tipo org.locationtech.jts.geom.Coordinate usando streams
-        org.locationtech.jts.geom.Coordinate[] coordinates = coordenadas.stream()
-                .map(coord -> new org.locationtech.jts.geom.Coordinate(coord.getLatitud(), coord.getLongitud()))
-                .toArray(org.locationtech.jts.geom.Coordinate[]::new);
+        org.locationtech.jts.geom.Coordinate[] coordinates =
+                listOfCoordinates.toArray(new org.locationtech.jts.geom.Coordinate[0]);
 
-        // Crear el polígono usando GeometryFactory
         GeometryFactory geometryFactory = new GeometryFactory();
         LinearRing linearRing = geometryFactory.createLinearRing(coordinates);
+
         Polygon polygon = geometryFactory.createPolygon(linearRing, null);
 
-        // Crear el punto a verificar
-        org.locationtech.jts.geom.Coordinate point = new org.locationtech.jts.geom.Coordinate(lat, lon);
-        boolean isInside = polygon.contains(geometryFactory.createPoint(point));
-
-        // Retornar respuesta encapsulada en CheckPointResponse
-        return new CheckPointResponse(isInside, idGeozone);
+        org.locationtech.jts.geom.Coordinate point = new org.locationtech.jts.geom.Coordinate(lat, lon); // Coordinate inside polygon
+        return new CheckPointResponse(polygon.contains(geometryFactory.createPoint(point)), idGeozone);
     }
 }

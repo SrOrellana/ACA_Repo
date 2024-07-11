@@ -35,7 +35,7 @@ public class GeozoneController {
 
     @Autowired
     private PointInPolygon pointInPolygon;
-
+    @Autowired
     private GeozoneService geozoneService;
 
     @GetMapping("")
